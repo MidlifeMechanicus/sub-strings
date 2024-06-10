@@ -1,14 +1,25 @@
-# Turn word into an array
-# Compare dictionary to array and push to new array for each inclusion
-# Then tally
+# This was very difficult for me. I went down the wrong road completely.
 
-word = "below" 
-p word
-dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"] 
-p dictionary
+test_dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
 
-included_words = dictionary.select { |substring| word.include? substring }
-p included_words
+test_string = "Howdy partner, sit down! How's it going?"
 
-word_count = included_words.tally
-p word_count
+def substrings(string, dictionary)
+  hash = {}
+  string_array = string.downcase.split
+  p string_array
+  string_array.each do |i|
+    dictionary.each do |j|
+      if i.include?(j)
+        if hash.has_key?(j)
+          hash[j] += 1
+        else
+          hash[j] = 1
+        end
+      end
+    end
+  end
+  hash
+end
+
+puts substrings(test_string, test_dictionary)
