@@ -7,7 +7,6 @@ test_string = "Howdy partner, sit down! How's it going?"
 def substrings(string, dictionary)
   hash = {}
   string_array = string.downcase.split
-  p string_array
   string_array.each do |i|
     dictionary.each do |j|
       if i.include?(j)
@@ -23,3 +22,21 @@ def substrings(string, dictionary)
 end
 
 puts substrings(test_string, test_dictionary)
+
+def alt_substrings(string, dictionary)
+  array = []
+  string_array = string.downcase.split
+  string_array.each do |i|
+      dictionary.each do |j|
+        if i.include?(j)
+          array << j
+        end
+      end
+  end
+  array.tally
+end
+
+puts alt_substrings(test_string, test_dictionary)
+
+# This is the solution I had originally been going for. I got so caught up in #select and #map that I missed the more obvious #each for the longest time.
+#Essentially, I immediately thought of #tally when I read the exercise, and wanted to create an array of matches that I could then #tally. Here it is.
